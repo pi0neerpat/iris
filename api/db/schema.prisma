@@ -16,8 +16,34 @@ model AuthDetail {
   timestamp DateTime @default(now())
 }
 
-model User {
-  id    String  @id
+model Hero {
+  id    String  @id @id @default(uuid())
+  address String
   authDetail AuthDetail
-  games Game[] @relation(name: "gamesMinted" )
+
+}
+
+model Trigger {
+  id String @id @default(uuid())
+  quest Quest?
+}
+
+model Quest {
+  id String @id @default(uuid())
+  merchant Merchant @relation(name: "merchantQuests")
+  transactions Transaction[] @relation(name: "questTransactions")
+  trigger Trigger
+}
+
+model Merchant {
+  quests Quest[] @relation(name: "merchantQuests")
+}
+
+model Transaction {
+  id String @id
+  quest Quest
+  timestamp DateTime
+  blockNumber String
+  quest Quest @relation(name: "questTransactions")
+  hero Hero @relation(name: "heroTransactions")
 }
