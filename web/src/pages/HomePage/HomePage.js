@@ -6,21 +6,19 @@ const HomePage = () => {
     <div className="text-white bg-gradient-to-r from-purple to-pink ">
       <section className="container flex-grow py-32 text-center ">
         <h1 className="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-          Nifty Chess
+          Iris
         </h1>
-
         <h3 className="my-4 text-3xl leading-tight">
-          {' '}
-          Collect and trade chess games
+          Your users are Heros. Help them fulfil their Destiny
         </h3>
         <div className="mt-8">
-          <Link
-            to={routes.games()}
+          {`<code snippet/>`}
+          {/*  <Link
             type="submit"
             className="hover:underline bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg"
           >
-            See all Games
-          </Link>
+            Copy
+          </Link>*/}
         </div>
       </section>
 
@@ -67,21 +65,12 @@ const HomePage = () => {
           <div className="flex flex-wrap">
             <div className="w-5/6 sm:w-1/2 p-6">
               <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                What is Nifty Chess?
+                What is Iris?
               </h3>
-              <p className="text-gray-600 mb-8">
-                There are more possible games of chess than atoms in the
-                universe. NiftyChess is a way to save any game of chess ever
-                played. We think chess is a beautiful art. Collect your favorite
-                openings, famous games, or personal matches. Every saved game is
-                unique.
-                <br />
-                <br />
-                Generate, Mint, Enjoy!
-              </p>
+              <p className="text-gray-600 mb-8">TODO</p>
             </div>
             <div className="w-full sm:w-1/2 p-6">
-              <img src="/game.gif" />
+              <img src="/.gif" />
             </div>
           </div>
 
@@ -111,66 +100,6 @@ const HomePage = () => {
             </div>
           </div>
         */}
-        </div>
-      </section>
-
-      {/* Title cards */}
-      <section className="bg-white py-8">
-        <div className="container mx-auto flex flex-wrap pt-4 pb-12">
-          <h3 className="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-800">
-            Start your Digital Chess Collection
-          </h3>
-
-          <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-            <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div className="w-full font-bold text-xl text-gray-800 px-6">
-                Owocki's Games
-              </div>
-              <p className="text-gray-800 text-base px-6 mb-5">
-                Curated by Joseph
-              </p>
-            </div>
-          </div>
-          <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-            <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div className="w-full font-bold text-xl text-gray-800 px-6">
-                Queen's Gambits
-              </div>
-              <p className="text-gray-800 text-base px-6 mb-5">
-                Curated by Joseph
-              </p>
-            </div>
-          </div>
-          <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-            <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div className="w-full font-bold text-xl text-gray-800 px-6">
-                King's Gambits
-              </div>
-              <p className="text-gray-800 text-base px-6 mb-5">
-                Curated by Joseph
-              </p>
-            </div>
-          </div>
-          <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-            <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div className="w-full font-bold text-xl text-gray-800 px-6">
-                French Defenses
-              </div>
-              <p className="text-gray-800 text-base px-6 mb-5">
-                Curated by Joseph
-              </p>
-            </div>
-          </div>
-          <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-            <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div className="w-full font-bold text-xl text-gray-800 px-6">
-                London Systems
-              </div>
-              <p className="text-gray-800 text-base px-6 mb-5">
-                Curated by Joseph
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -209,20 +138,19 @@ const HomePage = () => {
       {/* CTA block */}
       <section className="container flex-grow py-32 mx-auto text-center ">
         <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-          Generate your GIF
+          Your Heroes are waiting
         </h2>
         <div className="w-full mb-4">
           <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
-        <h3 className="my-4 text-3xl leading-tight">LiChess & Chess.com</h3>
+        <h3 className="my-4 text-3xl leading-tight">{`<code snippet/>`}</h3>
         <div className="mt-8">
           <Link
-            to={routes.newGame()}
             type="submit"
             className="hover:underline bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg"
           >
-            Generate
+            Copy
           </Link>
         </div>
       </section>
