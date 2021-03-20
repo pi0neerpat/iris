@@ -23,6 +23,39 @@ const QuestForm = (props) => {
         />
 
         <Label
+          name="name"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Quest Name
+        </Label>
+        <TextField
+          name="name"
+          placeHolder="e.g. NFT Purchase"
+          defaultValue={props.quest?.name || 'NFT Purchase'}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+        <FieldError name="name" className="rw-field-error" />
+        <Label
+          name="chainId"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Chain ID
+        </Label>
+        <TextField
+          name="chainId"
+          placeHolder="e.g. 100"
+          defaultValue={props.quest?.token?.chainId || '100'}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+        <FieldError name="chainId" className="rw-field-error" />
+
+        <Label
           name="contractAddress"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
@@ -31,7 +64,10 @@ const QuestForm = (props) => {
         </Label>
         <TextField
           name="contractAddress"
-          defaultValue={props.quest?.contractAddress}
+          defaultValue={
+            props.quest?.contractAddress ||
+            '0xA8f3447922d786045CB582B0C825723B744a54df'
+          }
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
@@ -47,7 +83,7 @@ const QuestForm = (props) => {
         </Label>
         <TextField
           name="methodName"
-          defaultValue={props.quest?.methodName}
+          defaultValue={props.quest?.methodName || 'mint'}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
@@ -63,7 +99,7 @@ const QuestForm = (props) => {
         </Label>
         <TextField
           name="purchaseBalance"
-          defaultValue={props.quest?.purchaseBalance}
+          defaultValue={props.quest?.purchaseBalance | '0'}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
@@ -79,7 +115,7 @@ const QuestForm = (props) => {
         </Label>
         <TextField
           name="domain"
-          defaultValue={props.quest?.domain}
+          defaultValue={props.quest?.domain || 'localhost:8910'}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
@@ -87,52 +123,23 @@ const QuestForm = (props) => {
         <FieldError name="domain" className="rw-field-error" />
 
         <Label
-          name="name"
+          name="tokenAddress"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Name
+          Token address for payment
         </Label>
         <TextField
-          name="name"
-          defaultValue={props.quest?.name}
+          name="tokenAddress"
+          defaultValue={
+            props.quest?.tokenAddress ||
+            '0xa8f3447922d786045cb582b0c825723b744a54df'
+          }
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
-        <FieldError name="name" className="rw-field-error" />
-
-        <Label
-          name="tokenId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Token id
-        </Label>
-        <TextField
-          name="tokenId"
-          defaultValue={props.quest?.tokenId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="tokenId" className="rw-field-error" />
-
-        <Label
-          name="merchantId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Merchant id
-        </Label>
-        <TextField
-          name="merchantId"
-          defaultValue={props.quest?.merchantId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="merchantId" className="rw-field-error" />
+        <FieldError name="tokenAddress" className="rw-field-error" />
 
         <Label
           name="triggerId"
@@ -144,7 +151,7 @@ const QuestForm = (props) => {
         <TextField
           name="triggerId"
           defaultValue={props.quest?.triggerId}
-          readonly
+          readOnly
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}

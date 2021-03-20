@@ -1,0 +1,62 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Hero",
+      "field": "merchantAccount",
+      "type": "Merchant",
+      "arity": "Optional"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Hero",
+      "field": "merchantDetails"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Quest",
+      "field": "purchaseToken",
+      "type": "Token",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Quest",
+          "field": "purchaseToken"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Quest",
+          "field": "purchaseToken"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"questPurchaseToken\""
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Quest",
+      "field": "purchaseBalance",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Merchant",
+      "field": "owner",
+      "type": "Hero",
+      "arity": "Required"
+    }
+  ]
+}

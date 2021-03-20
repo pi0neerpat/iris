@@ -5,6 +5,7 @@ export const schema = gql`
     address: String!
     authDetail: AuthDetail!
     authDetailId: String!
+    owner: Hero!
   }
 
   type Query {

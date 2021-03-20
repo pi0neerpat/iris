@@ -38,4 +38,6 @@ export const Hero = {
     db.hero.findUnique({ where: { id: root.id } }).quests(),
   Quest: (_obj, { root }) =>
     db.hero.findUnique({ where: { id: root.id } }).Quest(),
+  merchantAccount: (_obj, { root }) =>
+    db.hero.findUnique({ where: { id: root.id } }).merchantAccount(),
 }

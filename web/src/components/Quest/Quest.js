@@ -1,5 +1,6 @@
 import { useMutation, useFlash } from '@redwoodjs/web'
 import { Link, routes, navigate } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
 
 import { QUERY } from 'src/components/QuestsCell'
 
@@ -33,6 +34,7 @@ const checkboxInputTag = (checked) => {
 
 const Quest = ({ quest }) => {
   const { addMessage } = useFlash()
+  const { currentUser } = useAuth()
   const [deleteQuest] = useMutation(DELETE_QUEST_MUTATION, {
     onCompleted: () => {
       navigate(routes.quests())
@@ -45,6 +47,28 @@ const Quest = ({ quest }) => {
       deleteQuest({ variables: { id } })
     }
   }
+
+  const merchantControls = (
+    <>
+      {currentUser.address === quest.merchant.owner.address && (
+        <nav className="rw-button-group">
+          <Link
+            to={routes.editQuest({ id: quest.id })}
+            className="rw-button rw-button-blue"
+          >
+            Edit
+          </Link>
+          <a
+            href="#"
+            className="rw-button rw-button-red"
+            onClick={() => onDeleteClick(quest.id)}
+          >
+            Delete
+          </a>
+        </nav>
+      )}
+    </>
+  )
 
   return (
     <>
@@ -95,21 +119,7 @@ const Quest = ({ quest }) => {
           </tbody>
         </table>
       </div>
-      <nav className="rw-button-group">
-        <Link
-          to={routes.editQuest({ id: quest.id })}
-          className="rw-button rw-button-blue"
-        >
-          Edit
-        </Link>
-        <a
-          href="#"
-          className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(quest.id)}
-        >
-          Delete
-        </a>
-      </nav>
+      {merchantControls}
     </>
   )
 }

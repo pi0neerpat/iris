@@ -16,6 +16,8 @@ import Routes from 'src/Routes'
 import './scaffold.css'
 import './index.css'
 
+let ethereum
+
 const ApolloInjector = ({ children }) => {
   const { uri, headers } = useFetchConfig()
   let ethereum

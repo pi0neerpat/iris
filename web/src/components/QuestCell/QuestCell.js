@@ -10,9 +10,12 @@ export const QUERY = gql`
       purchaseBalance
       domain
       name
-      tokenId
-      merchantId
-      triggerId
+      merchant {
+        id
+        owner {
+          address
+        }
+      }
     }
   }
 `

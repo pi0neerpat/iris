@@ -20,7 +20,7 @@ const NewQuest = () => {
 
   const [createQuest, { loading, error }] = useMutation(CREATE_QUEST_MUTATION, {
     onCompleted: () => {
-      navigate(routes.quests())
+      navigate(routes.quest({ triggerId }))
       addMessage('Quest created.', { classes: 'rw-flash-success' })
     },
   })

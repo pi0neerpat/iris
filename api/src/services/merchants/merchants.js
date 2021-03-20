@@ -30,8 +30,10 @@ export const deleteMerchant = ({ id }) => {
 }
 
 export const Merchant = {
+  owner: (_obj, { root }) =>
+    db.merchant.findFirst({ where: { id: root.id } }).owner(),
   quests: (_obj, { root }) =>
-    db.merchant.findUnique({ where: { id: root.id } }).quests(),
+    db.merchant.findFirst({ where: { id: root.id } }).quests(),
   authDetail: (_obj, { root }) =>
-    db.merchant.findUnique({ where: { id: root.id } }).authDetail(),
+    db.merchant.findFirst({ where: { id: root.id } }).authDetail(),
 }

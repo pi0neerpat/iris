@@ -19,9 +19,55 @@ export const questByTriggerId = ({ triggerId }) => {
   return quest
 }
 
-export const createQuest = ({ input }) => {
+export const createQuest = async ({ input }) => {
+  const merchant = await db.hero
+    .findFirst({
+      where: {
+        address: context.currentUser.address,
+      },
+    })
+    .merchantAccount()
+  if (!merchant) {
+    merchant = await db.merchant.create({
+      data: {
+        owner: { connect: { address: context.currentUser.address } },
+      },
+    })
+  }
+  const { chainId, tokenAddress } = input
+  let token = await db.token.findFirst({
+    where: {
+      contractAddress: tokenAddress,
+      chainId,
+    },
+  })
+  if (!token)
+    token = await db.token.create({
+      data: {
+        contractAddress: tokenAddress,
+        chainId,
+      },
+    })
+
+  const {
+    triggerId,
+    contractAddress,
+    methodName,
+    purchaseBalance,
+    name,
+    domain,
+  } = input
   return db.quest.create({
-    data: input,
+    data: {
+      merchant: { connect: { id: merchant.id } },
+      trigger: { connect: { id: triggerId } },
+      contractAddress,
+      methodName,
+      purchaseToken: { connect: { id: token.id } },
+      purchaseBalance,
+      domain,
+      name,
+    },
   })
 }
 
@@ -40,15 +86,15 @@ export const deleteQuest = ({ id }) => {
 
 export const Quest = {
   merchant: (_obj, { root }) =>
-    db.quest.findUnique({ where: { id: root.id } }).merchant(),
+    db.quest.findFirst({ where: { id: root.id } }).merchant(),
   transactions: (_obj, { root }) =>
-    db.quest.findUnique({ where: { id: root.id } }).transactions(),
+    db.quest.findFirst({ where: { id: root.id } }).transactions(),
   trigger: (_obj, { root }) =>
-    db.quest.findUnique({ where: { id: root.id } }).trigger(),
+    db.quest.findFirst({ where: { id: root.id } }).trigger(),
   heroes: (_obj, { root }) =>
-    db.quest.findUnique({ where: { id: root.id } }).heroes(),
+    db.quest.findFirst({ where: { id: root.id } }).heroes(),
   heroesActive: (_obj, { root }) =>
-    db.quest.findUnique({ where: { id: root.id } }).heroesActive(),
+    db.quest.findFirst({ where: { id: root.id } }).heroesActive(),
   Token: (_obj, { root }) =>
-    db.quest.findUnique({ where: { id: root.id } }).Token(),
+    db.quest.findFirst({ where: { id: root.id } }).Token(),
 }

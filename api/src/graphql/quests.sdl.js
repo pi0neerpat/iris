@@ -8,11 +8,11 @@ export const schema = gql`
     heroesActive: [Hero]!
     contractAddress: String!
     methodName: String!
-    purchaseBalance: String!
+    purchaseToken: Token
+    purchaseBalance: String
     domain: String!
     name: String!
-    Token: Token
-    tokenId: String
+    purchaseTokenId: String
     merchantId: String!
     triggerId: String!
   }
@@ -26,23 +26,22 @@ export const schema = gql`
   input CreateQuestInput {
     contractAddress: String!
     methodName: String!
-    purchaseBalance: String!
+    purchaseBalance: String
     domain: String!
     name: String!
-    tokenId: String
-    merchantId: String!
+    chainId: String!
+    tokenAddress: String
     triggerId: String!
   }
 
   input UpdateQuestInput {
     contractAddress: String
     methodName: String
+    chainId: String!
     purchaseBalance: String
     domain: String
     name: String
-    tokenId: String
-    merchantId: String
-    triggerId: String
+    tokenAddress: String
   }
 
   type Mutation {
