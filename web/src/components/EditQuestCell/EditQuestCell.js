@@ -3,17 +3,23 @@ import { navigate, routes } from '@redwoodjs/router'
 import QuestForm from 'src/components/QuestForm'
 
 export const QUERY = gql`
-  query FIND_QUEST_BY_ID($id: String!) {
-    quest: quest(id: $id) {
+  query FIND_QUEST_BY_TRIGGER_ID($triggerId: String!) {
+    quest: questByTriggerId(triggerId: $triggerId) {
       id
       contractAddress
       methodName
       purchaseBalance
       domain
       name
-      tokenId
-      merchantId
-      triggerId
+      trigger {
+        id
+      }
+      merchant {
+        id
+        owner {
+          address
+        }
+      }
     }
   }
 `
@@ -26,9 +32,6 @@ const UPDATE_QUEST_MUTATION = gql`
       purchaseBalance
       domain
       name
-      tokenId
-      merchantId
-      triggerId
     }
   }
 `
@@ -39,7 +42,7 @@ export const Success = ({ quest }) => {
   const { addMessage } = useFlash()
   const [updateQuest, { loading, error }] = useMutation(UPDATE_QUEST_MUTATION, {
     onCompleted: () => {
-      navigate(routes.quests())
+      navigate(routes.quest({ triggerId }))
       addMessage('Quest updated.', { classes: 'rw-flash-success' })
     },
   })
@@ -57,7 +60,7 @@ export const Success = ({ quest }) => {
       </header>
       <div className="rw-segment-main">
         <QuestForm
-          quest={quest}
+          quest={{ ...quest, triggerId: quest.trigger.id }}
           onSave={onSave}
           error={error}
           loading={loading}

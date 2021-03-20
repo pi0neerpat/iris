@@ -21,8 +21,14 @@ model Hero {
   authDetail AuthDetail
   transactions Transaction[] @relation(name: "heroTransactions")
   quests Quest[]
-  merchantAccount Merchant?
+  merchantAccount Merchant? //@relation(name: "heroMerchantAccount")
   // activeQuest Quest @relation(name: "heroActiveQuest")
+}
+
+model Merchant {
+  id    String  @id @default(uuid())
+  owner Hero? //@relation(name: "heroMerchantAccount")
+  quests Quest[] @relation(name: "merchantQuests")
 }
 
 model Trigger {
@@ -54,11 +60,7 @@ model Token {
   iconUrl String?
 }
 
-model Merchant {
-  id    String  @id @default(uuid())
-  owner Hero
-  quests Quest[] @relation(name: "merchantQuests")
-}
+
 
 model Transaction {
   id String @id

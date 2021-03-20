@@ -180,9 +180,95 @@
     {
       "tag": "CreateField",
       "model": "Hero",
-      "field": "merchantDetails",
+      "field": "merchantAccount",
       "type": "Merchant",
       "arity": "Optional"
+    },
+    {
+      "tag": "CreateModel",
+      "model": "Merchant"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Merchant",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Merchant",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Merchant",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Merchant",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "uuid()"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Merchant",
+      "field": "owner",
+      "type": "Hero",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Merchant",
+      "field": "quests",
+      "type": "Quest",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Merchant",
+          "field": "quests"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Merchant",
+          "field": "quests"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"merchantQuests\""
     },
     {
       "tag": "CreateModel",
@@ -462,9 +548,41 @@
     {
       "tag": "CreateField",
       "model": "Quest",
+      "field": "purchaseToken",
+      "type": "Token",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Quest",
+          "field": "purchaseToken"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Quest",
+          "field": "purchaseToken"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"questPurchaseToken\""
+    },
+    {
+      "tag": "CreateField",
+      "model": "Quest",
       "field": "purchaseBalance",
       "type": "String",
-      "arity": "Required"
+      "arity": "Optional"
     },
     {
       "tag": "CreateField",
@@ -586,85 +704,6 @@
       "field": "iconUrl",
       "type": "String",
       "arity": "Optional"
-    },
-    {
-      "tag": "CreateModel",
-      "model": "Merchant"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Merchant",
-      "field": "id",
-      "type": "String",
-      "arity": "Required"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Merchant",
-          "field": "id"
-        },
-        "directive": "id"
-      }
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Merchant",
-          "field": "id"
-        },
-        "directive": "default"
-      }
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Merchant",
-          "field": "id"
-        },
-        "directive": "default"
-      },
-      "argument": "",
-      "value": "uuid()"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Merchant",
-      "field": "quests",
-      "type": "Quest",
-      "arity": "List"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Merchant",
-          "field": "quests"
-        },
-        "directive": "relation"
-      }
-    },
-    {
-      "tag": "CreateArgument",
-      "location": {
-        "tag": "Directive",
-        "path": {
-          "tag": "Field",
-          "model": "Merchant",
-          "field": "quests"
-        },
-        "directive": "relation"
-      },
-      "argument": "name",
-      "value": "\"merchantQuests\""
     },
     {
       "tag": "CreateModel",

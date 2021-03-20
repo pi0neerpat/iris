@@ -31,7 +31,7 @@ const QuestForm = (props) => {
         </Label>
         <TextField
           name="name"
-          placeHolder="e.g. NFT Purchase"
+          placeholder="e.g. NFT Purchase"
           defaultValue={props.quest?.name || 'NFT Purchase'}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
@@ -47,7 +47,7 @@ const QuestForm = (props) => {
         </Label>
         <TextField
           name="chainId"
-          placeHolder="e.g. 100"
+          placeholder="e.g. 100"
           defaultValue={props.quest?.token?.chainId || '100'}
           className="rw-input"
           errorClassName="rw-input rw-input-error"

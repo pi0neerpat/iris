@@ -1,10 +1,10 @@
 import QuestsLayout from 'src/layouts/QuestsLayout'
 import EditQuestCell from 'src/components/EditQuestCell'
 
-const EditQuestPage = ({ id }) => {
+const EditQuestPage = ({ triggerId }) => {
   return (
     <QuestsLayout>
-      <EditQuestCell id={id} />
+      <EditQuestCell triggerId={triggerId} />
     </QuestsLayout>
   )
 }

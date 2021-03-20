@@ -10,6 +10,9 @@ export const QUERY = gql`
       purchaseBalance
       domain
       name
+      trigger {
+        id
+      }
       merchant {
         id
         owner {

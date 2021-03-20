@@ -1,7 +1,6 @@
 import { useMutation, useFlash } from '@redwoodjs/web'
 import { navigate, routes, useParams } from '@redwoodjs/router'
 import QuestForm from 'src/components/QuestForm'
-import { useAuth } from '@redwoodjs/auth'
 
 import { QUERY } from 'src/components/QuestsCell'
 
@@ -16,7 +15,6 @@ const CREATE_QUEST_MUTATION = gql`
 const NewQuest = () => {
   const { triggerId } = useParams()
   const { addMessage } = useFlash()
-  const { currentUser } = useAuth()
 
   const [createQuest, { loading, error }] = useMutation(CREATE_QUEST_MUTATION, {
     onCompleted: () => {
@@ -31,7 +29,6 @@ const NewQuest = () => {
 
   const quest = {
     triggerId,
-    merchantAddress: currentUser.address,
   }
 
   return (

@@ -50,22 +50,25 @@ const Quest = ({ quest }) => {
 
   const merchantControls = (
     <>
-      {currentUser.address === quest.merchant.owner.address && (
-        <nav className="rw-button-group">
-          <Link
-            to={routes.editQuest({ id: quest.id })}
-            className="rw-button rw-button-blue"
-          >
-            Edit
-          </Link>
-          <a
-            href="#"
-            className="rw-button rw-button-red"
-            onClick={() => onDeleteClick(quest.id)}
-          >
-            Delete
-          </a>
-        </nav>
+      {currentUser?.address === quest.merchant.owner.address && (
+        <>
+          <nav className="rw-button-group">
+            <Link
+              to={routes.editQuest({ triggerId: quest.trigger.id })}
+              className="rw-button rw-button-blue"
+            >
+              Edit
+            </Link>
+            <a
+              href="#"
+              className="rw-button rw-button-red"
+              onClick={() => onDeleteClick(quest.id)}
+            >
+              Delete
+            </a>
+            <h3>(Only visible for Merchant)</h3>
+          </nav>
+        </>
       )}
     </>
   )

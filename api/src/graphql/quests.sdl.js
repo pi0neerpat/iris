@@ -35,13 +35,14 @@ export const schema = gql`
   }
 
   input UpdateQuestInput {
-    contractAddress: String
-    methodName: String
-    chainId: String!
+    contractAddress: String!
+    methodName: String!
     purchaseBalance: String
-    domain: String
-    name: String
+    domain: String!
+    name: String!
+    chainId: String!
     tokenAddress: String
+    triggerId: String!
   }
 
   type Mutation {

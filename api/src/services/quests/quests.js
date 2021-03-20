@@ -20,17 +20,18 @@ export const questByTriggerId = ({ triggerId }) => {
 }
 
 export const createQuest = async ({ input }) => {
+  const heroMerchant = context.currentUser
   const merchant = await db.hero
     .findFirst({
       where: {
-        address: context.currentUser.address,
+        address: heroMerchant.address,
       },
     })
     .merchantAccount()
   if (!merchant) {
     merchant = await db.merchant.create({
       data: {
-        owner: { connect: { address: context.currentUser.address } },
+        owner: { connect: { address: heroMerchant.address } },
       },
     })
   }
@@ -71,7 +72,42 @@ export const createQuest = async ({ input }) => {
   })
 }
 
-export const updateQuest = ({ id, input }) => {
+export const updateQuest = async ({ id, input }) => {
+  const {
+    triggerId,
+    contractAddress,
+    methodName,
+    purchaseBalance,
+    name,
+    domain,
+    chainId,
+    tokenAddress,
+  } = input
+  let token = await db.token.findFirst({
+    where: {
+      contractAddress: tokenAddress,
+      chainId,
+    },
+  })
+  if (!token)
+    token = await db.token.create({
+      data: {
+        contractAddress: tokenAddress,
+        chainId,
+      },
+    })
+  return db.quest.update({
+    where: { id },
+    data: {
+      trigger: { update: { id: triggerId } },
+      contractAddress,
+      methodName,
+      purchaseToken: { connect: { id: token.id } },
+      purchaseBalance,
+      domain,
+      name,
+    },
+  })
   return db.quest.update({
     data: input,
     where: { id },
