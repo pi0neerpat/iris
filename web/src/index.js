@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom'
 import DefaultLayout from 'src/layouts/DefaultLayout'
 import { FatalErrorBoundary } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
+import { AuthProvider } from '@redwoodjs/auth'
 
 import { Toaster } from 'react-hot-toast'
 
@@ -54,11 +55,13 @@ ReactDOM.render(
     <Toaster position="top-left" reverseOrder={true} />
     <FetchConfigProvider>
       <ApolloInjector>
-        <RedwoodApolloProvider>
-          <DefaultLayout>
-            <Routes />
-          </DefaultLayout>
-        </RedwoodApolloProvider>
+        <AuthProvider client={ethereum} type="ethereum">
+          <RedwoodApolloProvider>
+            <DefaultLayout>
+              <Routes />
+            </DefaultLayout>
+          </RedwoodApolloProvider>
+        </AuthProvider>
       </ApolloInjector>
     </FetchConfigProvider>
   </FatalErrorBoundary>,

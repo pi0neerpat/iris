@@ -20,8 +20,10 @@ const Routes = () => {
       <Route path="/heroes/{id}/edit" page={EditHeroPage} name="editHero" />
       <Route path="/heroes/{id}" page={HeroPage} name="hero" />
       <Route path="/heroes" page={HeroesPage} name="heroes" />
-      <Route path="/quests/new" page={NewQuestPage} name="newQuest" />
-      <Route path="/quests/{triggerId}/edit" page={EditQuestPage} name="editQuest" />
+      <Private unauthenticated="login">
+        <Route path="/quests/new" page={NewQuestPage} name="newQuest" />
+        <Route path="/quests/{triggerId}/edit" page={EditQuestPage} name="editQuest" />
+      </Private>
       <Route path="/quests/{triggerId}" page={QuestPage} name="quest" />
       <Route path="/quests" page={QuestsPage} name="quests" />
       <Route path="/tokens/new" page={NewTokenPage} name="newToken" />
