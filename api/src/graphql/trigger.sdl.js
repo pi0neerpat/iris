@@ -1,11 +1,14 @@
 export const schema = gql`
   type Trigger {
     id: String!
-    quest: Quest!
+    quest: Quest
+  }
+
+  type Query {
+    trigger: Trigger!
   }
 
   type Mutation {
-    createTrigger: Trigger!
     updateTrigger(id: String!, input: UpdateTriggerInput!): Trigger!
   }
 

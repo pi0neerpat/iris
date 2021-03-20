@@ -3,7 +3,7 @@ export const schema = gql`
     id: String!
     nonce: String!
     timestamp: DateTime!
-    User: [User]!
+    Hero: [Hero]!
   }
 
   type Query {

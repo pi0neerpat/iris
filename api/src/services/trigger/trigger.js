@@ -1,7 +1,7 @@
 import { db } from 'src/lib/db'
 
-export const createTrigger = () => {
-  return db.trigger.create()
+export const trigger = ({ input }) => {
+  return db.trigger.create({ data: { input } })
 }
 
 export const updateTrigger = async ({ id, input }) => {

@@ -1,6 +1,6 @@
 import { Link, routes } from '@redwoodjs/router'
 import logo from './logo.png'
-
+import TriggerCell from 'src/components/TriggerCell'
 const HomePage = () => {
   return (
     <div className="text-white bg-gradient-to-r from-purple to-pink ">
@@ -12,13 +12,7 @@ const HomePage = () => {
           Your users are Heros. Help them fulfil their Destiny
         </h3>
         <div className="mt-8">
-          {`<code snippet/>`}
-          {/*  <Link
-            type="submit"
-            className="hover:underline bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg"
-          >
-            Copy
-          </Link>*/}
+          <TriggerCell />
         </div>
       </section>
 

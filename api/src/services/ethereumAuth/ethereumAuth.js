@@ -14,7 +14,7 @@ const getNonceMessage = (nonce) => NONCE_MESSAGE + nonce
 export const authChallenge = async ({ input: { address: addressRaw } }) => {
   const nonce = Math.floor(Math.random() * 1000000).toString()
   const address = addressRaw.toLowerCase()
-  await db.user.upsert({
+  await db.hero.upsert({
     where: { address },
     update: {
       authDetail: {
@@ -42,7 +42,7 @@ export const authVerify = async ({
 }) => {
   try {
     const address = addressRaw.toLowerCase()
-    const authDetails = await db.user
+    const authDetails = await db.hero
       .findOne({
         where: { address },
       })
