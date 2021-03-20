@@ -21,22 +21,3 @@ model User {
   authDetail AuthDetail
   games Game[] @relation(name: "gamesMinted" )
 }
-
-model Game {
-  id String   @id
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  playedAt DateTime
-  mintedAt String?
-  minter User?  @relation(name: "gamesMinted", fields: [minterAddress], references: [id])
-  minterAddress String?
-  tokenId Int?
-  externalUrl String?
-  location String
-  event String?
-  moves String
-  moveCount Int
-  black String
-  white String
-  winner String
-}
