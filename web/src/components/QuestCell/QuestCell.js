@@ -1,8 +1,8 @@
 import Quest from 'src/components/Quest'
 
 export const QUERY = gql`
-  query FIND_QUEST_BY_ID($id: String!) {
-    quest: quest(id: $id) {
+  query FIND_QUEST_BY_TRIGGER_ID($triggerId: String!) {
+    quest: questByTriggerId(triggerId: $triggerId) {
       id
       contractAddress
       methodName

@@ -7,7 +7,7 @@ const Trigger = ({ trigger }) => {
       <p>
         <code>
           {`<button
-          onClick={() => window.open("http://${DOMAIN}/triggers/${trigger.id}")}
+          onClick={() => window.open("http://${DOMAIN}/quests/${trigger.id}")}
         >
           Start Quest
         </button>`}

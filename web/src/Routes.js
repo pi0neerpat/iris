@@ -21,8 +21,8 @@ const Routes = () => {
       <Route path="/heroes/{id}" page={HeroPage} name="hero" />
       <Route path="/heroes" page={HeroesPage} name="heroes" />
       <Route path="/quests/new" page={NewQuestPage} name="newQuest" />
-      <Route path="/quests/{id}/edit" page={EditQuestPage} name="editQuest" />
-      <Route path="/quests/{id}" page={QuestPage} name="quest" />
+      <Route path="/quests/{triggerId}/edit" page={EditQuestPage} name="editQuest" />
+      <Route path="/quests/{triggerId}" page={QuestPage} name="quest" />
       <Route path="/quests" page={QuestsPage} name="quests" />
       <Route path="/tokens/new" page={NewTokenPage} name="newToken" />
       <Route path="/tokens/{id}/edit" page={EditTokenPage} name="editToken" />

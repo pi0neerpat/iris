@@ -9,6 +9,15 @@ export const quest = ({ id }) => {
     where: { id },
   })
 }
+export const questByTriggerId = ({ triggerId }) => {
+  return db.trigger
+    .findOne({
+      where: { id: triggerId },
+    })
+    .quest()
+
+  return quest
+}
 
 export const createQuest = ({ input }) => {
   return db.quest.create({

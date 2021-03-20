@@ -20,6 +20,7 @@ export const schema = gql`
   type Query {
     quests: [Quest!]!
     quest(id: String!): Quest
+    questByTriggerId(triggerId: String!): Quest
   }
 
   input CreateQuestInput {
