@@ -2,7 +2,7 @@ datasource DS {
   // optionally set multiple providers
   // example: provider = ["sqlite", "postgresql"]
   provider = ["sqlite", "postgresql"]
-  url      = env("DATABASE_URL" )
+  url = "***"
 }
 
 generator client {
@@ -39,7 +39,7 @@ model Quest {
   heroesActive Hero[] @relation(name: "heroActiveQuest")
   contractAddress String
   methodName String
-  purchaseToken Token @relation(name: "questPurchaseToken")
+  purchaseToken Token
   purchaseBalance String
   domain String
   name String
@@ -49,7 +49,6 @@ model Token {
   id        String   @id @default(uuid())
   chainId String
   contractAddress String
-  quests Quest[] @relation(name: "questPurchaseToken")
   website String?
   iconUrl String?
 }
