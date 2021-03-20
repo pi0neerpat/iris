@@ -22,7 +22,8 @@ model Hero {
   authDetail AuthDetail
   transactions Transaction[] @relation(name: "heroTransactions")
   quests Quest[]
-  activeQuest Quest @relation(name: "heroActiveQuest")
+  merchantDetails Merchant?
+  // activeQuest Quest @relation(name: "heroActiveQuest")
 }
 
 model Trigger {
@@ -39,7 +40,7 @@ model Quest {
   heroesActive Hero[] @relation(name: "heroActiveQuest")
   contractAddress String
   methodName String
-  purchaseToken Token @relation(name: "questPurchaseToken")
+  // purchaseToken Token @relation(name: "questPurchaseToken")
   purchaseBalance String
   domain String
   name String
@@ -57,8 +58,6 @@ model Token {
 model Merchant {
   id    String  @id @default(uuid())
   quests Quest[] @relation(name: "merchantQuests")
-  address String
-  authDetail AuthDetail
 }
 
 model Transaction {
