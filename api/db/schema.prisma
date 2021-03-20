@@ -22,6 +22,7 @@ model Hero {
   authDetail AuthDetail
   transactions Transaction[] @relation(name: "heroTransactions")
   quests Quest[]
+  activeQuest Quest
 }
 
 model Trigger {
@@ -37,15 +38,16 @@ model Quest {
   heroes Hero[] // Implicit m-n relationships don't require @relation
   contractAddress String
   methodName String
-  token Token
+  purchaseToken Token
+  purchaseBalance String
+  domain String
+  name String
 }
 
 model Token {
   id        String   @id @default(uuid())
   chainId String
   contractAddress String
-  type String // erc721 or erc20
-  tokenId Int? // only for erc721
   uri String? // only for erc721
   website String?
   iconUrl String?
@@ -56,7 +58,6 @@ model Merchant {
   quests Quest[] @relation(name: "merchantQuests")
   address String
   authDetail AuthDetail
-
 }
 
 model Transaction {
