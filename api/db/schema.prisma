@@ -28,14 +28,14 @@ model Hero {
 
 model Trigger {
   id String @id @default(uuid())
-  quest Quest?
+  quest Quest? @relation(name: "questTrigger")
 }
 
 model Quest {
   id String @id @default(uuid())
   merchant Merchant @relation(name: "merchantQuests")
   transactions Transaction[] @relation(name: "questTransactions")
-  trigger Trigger
+  trigger Trigger @relation(name: "questTrigger")
   heroes Hero[] // Implicit m-n relationships don't require @relation
   heroesActive Hero[] @relation(name: "heroActiveQuest")
   contractAddress String
