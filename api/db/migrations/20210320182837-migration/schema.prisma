@@ -17,8 +17,7 @@ model AuthDetail {
 }
 
 model Hero {
-  id    String  @id @default(uuid())
-  address String
+  address String @id
   authDetail AuthDetail
   transactions Transaction[] @relation(name: "heroTransactions")
   quests Quest[]

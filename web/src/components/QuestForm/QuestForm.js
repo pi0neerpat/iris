@@ -144,6 +144,7 @@ const QuestForm = (props) => {
         <TextField
           name="triggerId"
           defaultValue={props.quest?.triggerId}
+          readonly
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}

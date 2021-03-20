@@ -21,9 +21,9 @@ export const Loading = () => <div>Loading...</div>
 
 export const Empty = ({ variables: { triggerId } }) => {
   navigate(routes.newQuest({ triggerId }))
+  return <></>
 }
 
 export const Success = ({ quest }) => {
-  location.load()
   return <Quest quest={quest} />
 }

@@ -1,6 +1,5 @@
 export const schema = gql`
   type Hero {
-    id: String!
     address: String!
     authDetail: AuthDetail!
     transactions: [Transaction]!
@@ -12,7 +11,7 @@ export const schema = gql`
 
   type Query {
     heroes: [Hero!]!
-    hero(id: String!): Hero
+    hero(address: String!): Hero
   }
 
   input CreateHeroInput {
@@ -29,7 +28,7 @@ export const schema = gql`
 
   type Mutation {
     createHero(input: CreateHeroInput!): Hero!
-    updateHero(id: String!, input: UpdateHeroInput!): Hero!
-    deleteHero(id: String!): Hero!
+    updateHero(address: String!, input: UpdateHeroInput!): Hero!
+    deleteHero(address: String!): Hero!
   }
 `
