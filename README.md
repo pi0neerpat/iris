@@ -1,20 +1,25 @@
-<h1 align="center">Welcome to Iris 👋</h1>
+<h1 align="center">Welcome to Iris Quest 👋</h1>
 <p>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
 </p>
 
-> Your users are Heroes. Help them fulfill their destiny. Made with <3 @ NFT Hack 2021
+> A flexible, sharable transaction builder for web3.
+
+Made with ❤️ @ [NFT Hack 2021](https://nft.ethglobal.co/)
 
 <!-- ### 🏠 [Homepage](TODO) -->
 
+![](./example.png)
+
 ## Tech stack
 
-> App "bones" forked from [Nifty Chess](https://github.com/pi0neerpat/nifty-chess-app/)
+See `Notes.md` for a full overview of how I made this.
 
 - `@redwoodjs` for the React and Prisma database tooling
 - `@oneclickdapp/ethereum-auth` for wallet authentication [docs](https://github.com/oneclickdapp/ethereum-auth/blob/master/README.md)
+- ethers for web3 interaction
 
 ### Code + Developer stuff
 
@@ -57,14 +62,14 @@ yarn rw dev --fwd="--host=0.0.0.0"
 
 ## Author
 
-👤 **Patrick Gallagher**
+👤 **Patrick Gallagher** - Dev
 
 - Website: https://patrickgallagher.dev
 
   - Twitter: [@pi0neerpat](https://twitter.com/pi0neerpat)
   - GitHub: [@pi0neerpat](https://github.com/pi0neerpat)
 
-  👤 **Luke Bateman**
+👤 **Luke Bateman** - Design
 
 - Website: https://lukebateman.studio
   - Twitter: [@lukebateman\_](https://twitter.com/lukebateman_)
