@@ -6,7 +6,7 @@ export const QUERY = gql`
     quest: questByTriggerId(triggerId: $triggerId) {
       id
       contractAddress
-      methodName
+      method
       purchaseBalance
       domain
       name

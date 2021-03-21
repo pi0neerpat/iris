@@ -11,7 +11,7 @@ import {
 import { truncate } from 'src/utils/helpers'
 import { unlockBrowser } from 'src/utils/web3'
 
-const Method = ({ method, contractAddress, network }) => {
+const Method = ({ method, contractAddress }) => {
   const { addMessage } = useFlash()
   const [response, setResponse] = React.useState()
 

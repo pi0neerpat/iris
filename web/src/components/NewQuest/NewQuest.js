@@ -24,7 +24,7 @@ const NewQuest = () => {
   })
 
   const onSave = (input) => {
-    createQuest({ variables: { input } })
+    createQuest({ variables: { input: { ...input, triggerId } } })
   }
 
   const quest = {

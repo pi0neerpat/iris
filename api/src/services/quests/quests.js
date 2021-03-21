@@ -15,8 +15,6 @@ export const questByTriggerId = ({ triggerId }) => {
       where: { id: triggerId },
     })
     .quest()
-
-  return quest
 }
 
 export const createQuest = async ({ input }) => {
@@ -53,17 +51,19 @@ export const createQuest = async ({ input }) => {
   const {
     triggerId,
     contractAddress,
-    methodName,
+    method,
     purchaseBalance,
     name,
     domain,
+    abi,
   } = input
   return db.quest.create({
     data: {
       merchant: { connect: { id: merchant.id } },
       trigger: { connect: { id: triggerId } },
       contractAddress,
-      methodName,
+      method,
+      abi,
       purchaseToken: { connect: { id: token.id } },
       purchaseBalance,
       domain,
@@ -76,7 +76,8 @@ export const updateQuest = async ({ id, input }) => {
   const {
     triggerId,
     contractAddress,
-    methodName,
+    method,
+    abi,
     purchaseBalance,
     name,
     domain,
@@ -101,7 +102,8 @@ export const updateQuest = async ({ id, input }) => {
     data: {
       trigger: { update: { id: triggerId } },
       contractAddress,
-      methodName,
+      method,
+      abi,
       purchaseToken: { connect: { id: token.id } },
       purchaseBalance,
       domain,

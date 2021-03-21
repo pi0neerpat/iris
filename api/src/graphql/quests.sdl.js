@@ -7,7 +7,8 @@ export const schema = gql`
     heroes: [Hero]!
     heroesActive: [Hero]!
     contractAddress: String!
-    methodName: String!
+    abi: String!
+    method: String!
     purchaseToken: Token
     purchaseBalance: String
     domain: String!
@@ -25,10 +26,11 @@ export const schema = gql`
 
   input CreateQuestInput {
     contractAddress: String!
-    methodName: String!
+    method: String!
     purchaseBalance: String
-    domain: String!
+    domain: String
     name: String!
+    abi: String!
     chainId: String!
     tokenAddress: String
     triggerId: String!
@@ -36,9 +38,10 @@ export const schema = gql`
 
   input UpdateQuestInput {
     contractAddress: String!
-    methodName: String!
+    method: String!
     purchaseBalance: String
-    domain: String!
+    domain: String
+    abi: String!
     name: String!
     chainId: String!
     tokenAddress: String

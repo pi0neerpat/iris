@@ -5,12 +5,32 @@ import {
   Label,
   TextField,
   Submit,
+  TextAreaField,
 } from '@redwoodjs/forms'
 
+import erc721Abi from 'src/utils/erc721Abi'
+import {
+  getWriteMethods,
+  filterEvents,
+  getViewMethods,
+  getMethodDisplayName,
+} from 'src/utils/contractHelpers'
+
 const QuestForm = (props) => {
+  const [abi, setAbi] = React.useState(JSON.stringify(erc721Abi))
+
   const onSubmit = (data) => {
     props.onSave(data, props?.quest?.id)
   }
+
+  const onChangeAbi = (event) => {
+    setAbi(event.target.value)
+  }
+
+  const methodOptions = [
+    ...getWriteMethods(JSON.parse(abi)),
+    ...getViewMethods(JSON.parse(abi)),
+  ].map((method, index) => method.name)
 
   return (
     <div className="rw-form-wrapper">
@@ -75,38 +95,39 @@ const QuestForm = (props) => {
         <FieldError name="contractAddress" className="rw-field-error" />
 
         <Label
-          name="methodName"
+          name="abi"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Method name
+          ABI (default ERC721)
         </Label>
-        <TextField
-          name="methodName"
-          defaultValue={props.quest?.methodName || 'mint'}
+        <TextAreaField
+          name="abi"
+          onChange={onChangeAbi}
+          defaultValue={props.quest?.abi || JSON.stringify(erc721Abi)}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
-        <FieldError name="methodName" className="rw-field-error" />
+        <FieldError name="abi" className="rw-field-error" />
 
         <Label
-          name="purchaseBalance"
+          name="method"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Purchase balance
+          Method
         </Label>
         <TextField
-          name="purchaseBalance"
-          defaultValue={props.quest?.purchaseBalance | '0'}
+          name="method"
+          defaultValue={props.quest?.method || 'transferFrom'}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
-        <FieldError name="purchaseBalance" className="rw-field-error" />
-
-        <Label
+        <FieldError name="method" className="rw-field-error" />
+        {JSON.stringify(methodOptions)}
+        {/*  <Label
           name="domain"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
@@ -157,7 +178,7 @@ const QuestForm = (props) => {
           validation={{ required: true }}
         />
         <FieldError name="triggerId" className="rw-field-error" />
-
+*/}
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save
