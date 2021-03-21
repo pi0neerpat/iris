@@ -65,7 +65,7 @@ const Quest = ({ quest }) => {
     </>
   )
 
-  const onSubmit = async ({ input }) => {
+  const onSubmit = async (input) => {
     try {
       setLoading(true)
       toast('Connecting to your wallet...')
@@ -73,15 +73,15 @@ const Quest = ({ quest }) => {
       if (network?.chainId !== Number(quest.chainId))
         throw Error('Please switch to Chain ID ' + quest.chainId)
 
-      console.log(input)
       const inputList = Object.keys(input).map((key) => input[key])
       const args = formatContractArgs(inputList)
+      console.log(args)
       const contract = new Contract(
-        contractAddress,
-        [quest.method],
+        quest.contractAddress,
+        [JSON.parse(quest.method)],
         walletProvider.getSigner()
       )
-      const tx = await contract[method.name](...args)
+      const tx = await contract[JSON.parse(quest.method).name](...args)
       toast.promise(tx.wait(), {
         loading: 'Processing...',
         success: () => {
