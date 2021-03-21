@@ -1,11 +1,11 @@
 import { routes, navigate, Link } from '@redwoodjs/router'
 import { FaFacebook, FaInstagram, FaTwitter, FaPinterest } from 'react-icons/fa'
-import { donateFlow } from 'src/utils/superfluid'
+// import { donateFlow } from 'src/utils/superfluid'
 import { toast } from 'react-hot-toast'
 
 const onDonateFlow = async () => {
-  const { error } = await donateFlow()
-  if (error) toast.error(error.message)
+  // const { error } = await donateFlow()
+  // if (error) toast.error(error.message)
 }
 
 const FooterLink = ({ href, label, icon: Icon }) => {
