@@ -14,7 +14,7 @@ import {
   formatContractArgs,
 } from 'src/utils/contractHelpers'
 import { truncate } from 'src/utils/general'
-import { unlockBrowser } from 'src/utils/web3'
+import { unlockBrowser } from 'src/utils/connect'
 
 const DELETE_QUEST_MUTATION = gql`
   mutation DeleteQuestMutation($id: String!) {
@@ -70,11 +70,10 @@ const Quest = ({ quest }) => {
       setLoading(true)
       toast('Connecting to your wallet...')
       const { walletProvider, network } = await unlockBrowser({ debug: false })
-      console.log(network.chainId)
-      console.log(quest.chainId)
-      if (network?.chainId !== quest.chainId)
-        throw Error('Please switch to Chain ID ', quest.chain)
+      if (network?.chainId !== Number(quest.chainId))
+        throw Error('Please switch to Chain ID ' + quest.chainId)
 
+      console.log(input)
       const inputList = Object.keys(input).map((key) => input[key])
       const args = formatContractArgs(inputList)
       const contract = new Contract(
