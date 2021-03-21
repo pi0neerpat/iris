@@ -64,7 +64,7 @@ const Field = ({
       field = (
         <TextField
           name={description}
-          className="block w-full p-1 border rounded text-xs "
+          className="block w-full p-1 border rounded text-xs h-10"
           validation={{ required: true }}
           placeholder={placeholder}
         />
@@ -108,19 +108,24 @@ const Field = ({
   )
 }
 
-const FlexibleForm = ({ onSubmit, inputs }) => {
+const FlexibleForm = ({ onSubmit, inputs, disabled }) => {
   return (
     <Form className="h-full w-full items-start" onSubmit={onSubmit}>
       {inputs.map((input, i) => (
         <Field {...input} key={i} />
       ))}
       <div className="flex justify-center">
-        <Submit className="mt-4 block bg-blue-500 text-white text-xs font-semibold uppercase tracking-wide rounded px-3 py-2 disabled:opacity-50">
-          Submit
+        <Submit disabled={disabled} className="w-full h-1/6">
+          <div className="flex items-center  w-80 h-16 px-8 pt-2 bg-indigo-900 border-4 rounded-lg">
+            <p className="w-44 h-9 text-base font-ultrabold tracking-wide leading-normal text-pink-100">
+              Complete
+            </p>
+          </div>
         </Submit>
       </div>
     </Form>
   )
 }
+// <Submit className="mt-4 block bg-blue-500 text-white text-xs font-semibold uppercase tracking-wide rounded px-3 py-2 disabled:opacity-50">
 
 export default FlexibleForm
