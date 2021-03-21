@@ -46,7 +46,7 @@ yarn rw dev
 yarn rw dev --fwd="--host=0.0.0.0"
 
 # on host machine
-./ngrok http 8910
+./ngrok http 8910 --host-header=rewrite
 ```
 
 ## New to Redwood?

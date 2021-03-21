@@ -9,15 +9,11 @@ import {
 } from '@redwoodjs/forms'
 
 import erc721Abi from 'src/utils/erc721Abi'
-import {
-  getWriteMethods,
-  filterEvents,
-  getViewMethods,
-  getMethodDisplayName,
-} from 'src/utils/contractHelpers'
+import { filterEvents, getMethodDisplayName } from 'src/utils/contractHelpers'
 
 const QuestForm = (props) => {
   const [abi, setAbi] = React.useState(JSON.stringify(erc721Abi))
+  const [method, setMethod] = React.useState(props.quest?.method)
 
   const onSubmit = (data) => {
     props.onSave(data, props?.quest?.id)
@@ -27,10 +23,10 @@ const QuestForm = (props) => {
     setAbi(event.target.value)
   }
 
-  const methodOptions = [
-    ...getWriteMethods(JSON.parse(abi)),
-    ...getViewMethods(JSON.parse(abi)),
-  ].map((method, index) => method.name)
+  const methodOptions = filterEvents(JSON.parse(abi)).map((method, index) => ({
+    value: method,
+    name: getMethodDisplayName(method),
+  }))
 
   return (
     <div className="rw-form-wrapper">
@@ -118,15 +114,27 @@ const QuestForm = (props) => {
         >
           Method
         </Label>
-        <TextField
-          name="method"
-          defaultValue={props.quest?.method || 'transferFrom'}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
+        <select
           validation={{ required: true }}
-        />
+          errorclassname="rw-input rw-input-error"
+          name="method"
+          onChange={(e) => setMethod(e.target.value)}
+          value={method ? method : ''}
+          className="rw-input my-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
+        >
+          {methodOptions.length !== 1 && (
+            <option disabled value="">
+              -- select an option --
+            </option>
+          )}
+          {methodOptions.map((option, index) => (
+            <option key={`${index}-${option.name}`} value={option.value}>
+              {option.name}
+            </option>
+          ))}
+        </select>
         <FieldError name="method" className="rw-field-error" />
-        {JSON.stringify(methodOptions)}
+
         {/*  <Label
           name="domain"
           className="rw-label"
