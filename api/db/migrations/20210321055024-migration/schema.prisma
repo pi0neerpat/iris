@@ -44,16 +44,17 @@ model Quest {
   heroes Hero[] // Implicit m-n relationships don't require @relation
   heroesActive Hero[] @relation(name: "heroActiveQuest")
   contractAddress String
-  methodName String
+  chainId String
+  abi String
+  method String
   purchaseToken Token? @relation(name: "questPurchaseToken")
   purchaseBalance String?
-  domain String
+  domain String?
   name String
 }
 
 model Token {
   id        String   @id @default(uuid())
-  chainId String
   contractAddress String
   quests Quest[] @relation(name: "questPurchaseToken")
   website String?

@@ -16,17 +16,19 @@ const QuestForm = (props) => {
   const [method, setMethod] = React.useState(props.quest?.method)
 
   const onSubmit = (data) => {
-    props.onSave(data, props?.quest?.id)
+    props.onSave({ ...data, method }, props?.quest?.id)
   }
 
   const onChangeAbi = (event) => {
     setAbi(event.target.value)
   }
 
-  const methodOptions = filterEvents(JSON.parse(abi)).map((method, index) => ({
-    value: method,
-    name: getMethodDisplayName(method),
-  }))
+  const methodOptions = filterEvents(JSON.parse(abi)).map(
+    (methodItem, index) => ({
+      value: JSON.stringify(methodItem),
+      name: getMethodDisplayName(methodItem),
+    })
+  )
 
   return (
     <div className="rw-form-wrapper">

@@ -7,9 +7,8 @@ export const QUERY = gql`
       id
       contractAddress
       method
-      purchaseBalance
-      domain
       name
+      chainId
       trigger {
         id
       }

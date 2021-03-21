@@ -4,12 +4,26 @@ import { useParams } from '@redwoodjs/router'
 
 const LoginPage = () => {
   const [isLoggingIn, setIsLoggingIn] = React.useState(false)
-  const { logIn, isAuthenticated, loading } = useAuth()
+  const { logIn, logOut, isAuthenticated, loading } = useAuth()
   const { redirectTo } = useParams()
 
   const onLogIn = async () => {
     setIsLoggingIn(true)
     await logIn()
+    setIsLoggingIn(false)
+    navigate(redirectTo || routes.home())
+  }
+
+  const onLoginWalletConnect = async () => {
+    setIsLoggingIn(true)
+    await logIn('walletConnect')
+    setIsLoggingIn(false)
+    navigate(redirectTo || routes.home())
+  }
+
+  const onLogOut = async () => {
+    setIsLoggingIn(true)
+    await logOut()
     setIsLoggingIn(false)
     navigate(redirectTo || routes.home())
   }
@@ -23,12 +37,30 @@ const LoginPage = () => {
         <p className="mt-4">
           Use the button below to authenticate your account
         </p>
+        <div className="mt-8">
+          <button
+            disabled={isLoggingIn}
+            onClick={onLogIn}
+            className="mt-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+          >
+            {isLoggingIn ? 'Logging in...' : 'MetaMask'}
+          </button>
+        </div>
+        <div className="mt-8">
+          <button
+            onClick={onLoginWalletConnect}
+            className="mt-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+          >
+            {isLoggingIn ? 'Logging in...' : 'WalletConnect'}
+          </button>
+        </div>
+        <br />
         <button
           disabled={isLoggingIn}
-          onClick={onLogIn}
-          className="mt-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+          onClick={onLogOut}
+          className="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border  rounded-md shadow-sm text-base font-medium text-black bg-black-600 hover:bg-black-700"
         >
-          {isLoggingIn ? 'Logging in...' : 'Log in'}
+          {isLoggingIn ? 'Loading...' : 'Log out'}
         </button>
       </div>
     </>

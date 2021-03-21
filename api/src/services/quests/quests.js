@@ -34,19 +34,19 @@ export const createQuest = async ({ input }) => {
     })
   }
   const { chainId, tokenAddress } = input
-  let token = await db.token.findFirst({
-    where: {
-      contractAddress: tokenAddress,
-      chainId,
-    },
-  })
-  if (!token)
-    token = await db.token.create({
-      data: {
-        contractAddress: tokenAddress,
-        chainId,
-      },
-    })
+  // let token = await db.token.findFirst({
+  //   where: {
+  //     contractAddress: tokenAddress,
+  //     chainId,
+  //   },
+  // })
+  // if (!token)
+  //   token = await db.token.create({
+  //     data: {
+  //       contractAddress: tokenAddress,
+  //       chainId,
+  //     },
+  //   })
 
   const {
     triggerId,
@@ -64,10 +64,11 @@ export const createQuest = async ({ input }) => {
       contractAddress,
       method,
       abi,
-      purchaseToken: { connect: { id: token.id } },
+      // purchaseToken: { connect: { id: token.id } },
       purchaseBalance,
       domain,
       name,
+      chainId,
     },
   })
 }
@@ -84,19 +85,19 @@ export const updateQuest = async ({ id, input }) => {
     chainId,
     tokenAddress,
   } = input
-  let token = await db.token.findFirst({
-    where: {
-      contractAddress: tokenAddress,
-      chainId,
-    },
-  })
-  if (!token)
-    token = await db.token.create({
-      data: {
-        contractAddress: tokenAddress,
-        chainId,
-      },
-    })
+  // let token = await db.token.findFirst({
+  //   where: {
+  //     contractAddress: tokenAddress,
+  //     chainId,
+  //   },
+  // })
+  // if (!token)
+  //   token = await db.token.create({
+  //     data: {
+  //       contractAddress: tokenAddress,
+  //       chainId,
+  //     },
+  //   })
   return db.quest.update({
     where: { id },
     data: {
@@ -104,7 +105,8 @@ export const updateQuest = async ({ id, input }) => {
       contractAddress,
       method,
       abi,
-      purchaseToken: { connect: { id: token.id } },
+      chainId,
+      // purchaseToken: { connect: { id: token.id } },
       purchaseBalance,
       domain,
       name,

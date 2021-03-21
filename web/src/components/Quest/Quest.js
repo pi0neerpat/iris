@@ -86,12 +86,12 @@ const Quest = ({ quest }) => {
               <td>{quest.contractAddress}</td>
             </tr>
             <tr>
-              <th>Method name</th>
-              <td>{quest.methodName}</td>
+              <th>Chain Id</th>
+              <td>{quest.chainId}</td>
             </tr>
             <tr>
-              <th>Token id</th>
-              <td>{quest.tokenId}</td>
+              <th>Method</th>
+              <td>{quest.method}</td>
             </tr>
           </tbody>
         </table>

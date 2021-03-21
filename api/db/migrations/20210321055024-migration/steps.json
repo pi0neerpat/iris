@@ -541,7 +541,21 @@
     {
       "tag": "CreateField",
       "model": "Quest",
-      "field": "methodName",
+      "field": "chainId",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Quest",
+      "field": "abi",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Quest",
+      "field": "method",
       "type": "String",
       "arity": "Required"
     },
@@ -589,7 +603,7 @@
       "model": "Quest",
       "field": "domain",
       "type": "String",
-      "arity": "Required"
+      "arity": "Optional"
     },
     {
       "tag": "CreateField",
@@ -644,13 +658,6 @@
       },
       "argument": "",
       "value": "uuid()"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Token",
-      "field": "chainId",
-      "type": "String",
-      "arity": "Required"
     },
     {
       "tag": "CreateField",

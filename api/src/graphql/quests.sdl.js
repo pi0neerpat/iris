@@ -13,6 +13,7 @@ export const schema = gql`
     purchaseBalance: String
     domain: String!
     name: String!
+    chainId: String!
     purchaseTokenId: String
     merchantId: String!
     triggerId: String!
