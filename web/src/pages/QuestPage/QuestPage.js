@@ -3,9 +3,9 @@ import QuestCell from 'src/components/QuestCell'
 
 const QuestPage = ({ triggerId }) => {
   return (
-    <QuestsLayout>
+    <>
       <QuestCell triggerId={triggerId} />
-    </QuestsLayout>
+    </>
   )
 }
 

@@ -42,7 +42,7 @@ export const Success = ({ quest }) => {
   const { addMessage } = useFlash()
   const [updateQuest, { loading, error }] = useMutation(UPDATE_QUEST_MUTATION, {
     onCompleted: () => {
-      navigate(routes.quest({ triggerId }))
+      navigate(routes.quest({ triggerId: quest.trigger.id }))
       addMessage('Quest updated.', { classes: 'rw-flash-success' })
     },
   })

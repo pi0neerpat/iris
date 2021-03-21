@@ -77,16 +77,10 @@ const Quest = ({ quest }) => {
     <>
       <div className="rw-segment">
         <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
-            Quest {quest.id} Detail
-          </h2>
+          <h2 className="rw-heading rw-heading-secondary">{quest.name}</h2>
         </header>
         <table className="rw-table">
           <tbody>
-            <tr>
-              <th>Id</th>
-              <td>{quest.id}</td>
-            </tr>
             <tr>
               <th>Contract address</th>
               <td>{quest.contractAddress}</td>
@@ -96,28 +90,8 @@ const Quest = ({ quest }) => {
               <td>{quest.methodName}</td>
             </tr>
             <tr>
-              <th>Purchase balance</th>
-              <td>{quest.purchaseBalance}</td>
-            </tr>
-            <tr>
-              <th>Domain</th>
-              <td>{quest.domain}</td>
-            </tr>
-            <tr>
-              <th>Name</th>
-              <td>{quest.name}</td>
-            </tr>
-            <tr>
               <th>Token id</th>
               <td>{quest.tokenId}</td>
-            </tr>
-            <tr>
-              <th>Merchant id</th>
-              <td>{quest.merchantId}</td>
-            </tr>
-            <tr>
-              <th>Trigger id</th>
-              <td>{quest.triggerId}</td>
             </tr>
           </tbody>
         </table>
