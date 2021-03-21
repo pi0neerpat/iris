@@ -5,13 +5,9 @@ const Trigger = ({ trigger }) => {
   return (
     <div>
       <p>
-        <code>
-          {`<button
-          onClick={() => window.open("http://${DOMAIN}/quests/${trigger.id}")}
-        >
-          Start Quest
-        </button>`}
-        </code>
+        <b>👇 copy + share ❤️</b>
+        <br />
+        {`http://${DOMAIN}/quests/${trigger.id}`}
       </p>
     </div>
   )

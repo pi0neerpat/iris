@@ -6,7 +6,7 @@ module.exports = {
       colors: {
         blue: {
           light: '#96b6ff',
-          DEFAULT: '#55b6ff',
+          DEFAULT: '#8EDEF0',
           dark: '#2b6a99',
         },
         pink: {
@@ -16,7 +16,7 @@ module.exports = {
         },
         purple: {
           light: '#858cfb',
-          DEFAULT: '#5d60ff',
+          DEFAULT: '#3700b3',
           dark: '#333cdf',
         },
       },
